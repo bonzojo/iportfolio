@@ -501,10 +501,11 @@ section,
 
 .section-title h2:after {
   content: "";
-  position: absolute;
+  position: relative;
   display: block;
-  width: 50px;
-  height: 3px;
+  width: 100%;
+  margin-top: 2px;
+  height: 2px;
   background: var(--accent-color);
   left: 0;
   bottom: 0;
@@ -527,19 +528,17 @@ section,
   justify-content: center;
 }
 
-.hero img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
+.hero canvas {
+  position: absolute; /* Position the canvas absolutely */
+  inset: 0; /* Cover the entire area */
+  width: 100%; /* Fill the container */
+  height: 100%; /* Fill the container */
+  z-index: 2; /* Ensure it's below the text but above the image */
 }
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 70%);
+  background: color-mix(in srgb, var(--background-color), transparent 50%);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -551,14 +550,14 @@ section,
 }
 
 .hero h2 {
-  margin: 0;
+  margin: 0 0 0 12px;
   font-size: 64px;
   font-weight: 700;
-  text-shadow: 5px 5px #050d18;
+  text-shadow: 4px 4px #393c42;
 }
 
 .hero p {
-  margin: 7px 0 0 36px;
+  margin: 7px 0 0 46px;
   font-size: 26px;
 }
 

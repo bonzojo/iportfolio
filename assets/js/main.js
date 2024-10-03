@@ -177,3 +177,48 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+    /* Matrix Hero */
+    const canvas = document.getElementById('heroMatrix');
+    const context = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const binary = '01'
+    
+    const fontSize = 28;
+    const columns = canvas.width/fontSize;
+    
+    const rainDrops = [];
+    
+    for( let x = 0; x < columns; x++ ) {
+      rainDrops[x] = 1;
+    }
+    
+    const draw = () => {
+      context.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      
+    
+        //loop color experiment
+        colorArray = ['#213547','#2c323d','#2a2a2a','#444242','#252E3C','#1e293b'];
+    
+    
+      context.fillStyle = colorArray[Math.floor(Math.random() * colorArray.length)];
+      context.font = fontSize + 'px monospace';
+    
+      for(let i = 0; i < rainDrops.length; i++)
+      {
+        const text = binary.charAt(Math.floor(Math.random() * binary.length));
+        context.fillText(text, i*fontSize, rainDrops[i]*fontSize);
+        
+        if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975){
+          rainDrops[i] = 0;
+            }
+        rainDrops[i]++;
+      }
+    };
+    
+    setInterval(draw, 24);
+
