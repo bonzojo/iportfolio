@@ -99,7 +99,7 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100,
+      typeSpeed: 50,
       backSpeed: 50,
       backDelay: 2000
     });
@@ -175,6 +175,49 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+
+
+  // Contact Form Submission
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent the default form submission
+
+  // Create a FormData object from the form
+  const formData = new FormData(this);
+
+    fetch('../assets/forms/contact.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      return response.json();
+  })
+  .then(data => {
+      const responseMessage = document.getElementById('responseMessage');
+      responseMessage.innerHTML = ''; // Clear previous messages
+
+      if (data.success) {
+          responseMessage.innerHTML = '<div class="alert alert-success">' + data.success + '</div>';
+          this.reset(); // Reset the form
+      } else if (data.error) {
+          responseMessage.innerHTML = '<div class="alert alert-danger">' + data.error + '</div>';
+      }
+  })
+  .catch(error => { // Ensure this catch is directly after the last then
+      console.error('Fetch error:', error); // Log the error
+      document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger">An unexpected error occurred. Please try again later.</div>';
+  });
+});
+
+
+
+
+
+
+
 
 })();
 

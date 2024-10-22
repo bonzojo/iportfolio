@@ -29,7 +29,7 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #0e2330; /* Background color for the entire website, including individual sections */
+  --background-color: #1e2c34; /* Background color for the entire website, including individual sections */
   --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #74aaba; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
@@ -90,54 +90,11 @@ a:hover {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
   text-shadow: 3px 3px  #050d18;
-}
-
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .loading {
-  display: none;
-  background: var(--surface-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
 }
 
 @keyframes php-email-form-loading {
@@ -601,6 +558,11 @@ section,
   background-color: #213547;
 }
 
+#aboutImg {
+  border: solid 2px var(--accent-color);
+  border-radius: 15%;
+}
+
 .about .content h2 {
   font-weight: 700;
   font-size: 24px;
@@ -628,14 +590,10 @@ section,
   line-height: 0;
 }
 
-/*--------------------------------------------------------------
-# Stack Section
---------------------------------------------------------------*/
-.stack {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
+.stack-icon img {
+  height: 96px;
+  width: 96px;
+  padding: 2px;
 }
 
 
@@ -666,7 +624,8 @@ section,
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  background-color: #151f2b;
+  color: color-mix(in srgb, #149ddd, transparent 20%);
   margin-bottom: 10px;
 }
 
@@ -705,28 +664,44 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
+.modal {
+	--bs-modal-zindex: 1055;
+	--bs-modal-width: 500px;
+	--bs-modal-padding: 1rem;
+	--bs-modal-margin: 0.5rem;
+	--bs-modal-color: ;
+	--bs-modal-bg: #000;
+	--bs-modal-border-color: var(--bs-border-color-translucent);
+	--bs-modal-border-width: var(--bs-border-width);
+	--bs-modal-border-radius: var(--bs-border-radius-lg);
+	--bs-modal-box-shadow: var(--bs-box-shadow-sm);
+	--bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) - (var(--bs-border-width)));
+	--bs-modal-header-padding-x: 1rem;
+	--bs-modal-header-padding-y: 1rem;
+	--bs-modal-header-padding: 1rem 1rem;
+	--bs-modal-header-border-color: var(--accent-color);
+	--bs-modal-header-border-width: var(--bs-border-width);
+	--bs-modal-title-line-height: 1.5;
+	--bs-modal-footer-gap: 0.5rem;
+	--bs-modal-footer-bg: ;
+	--bs-modal-footer-border-color: var(--accent-color);
+	--bs-modal-footer-border-width: var(--bs-border-width);
+}
+
+.modal-header {
+  background-color: var(--background-color);
+}
+
+.modal-body {
+ background-color: #2a2a2a;
+}
+
+.modal-footer {
+  background-color: var(--background-color);
+}
+
 .portfolio {
   background-color: #2a2a2a;
-}
-
-.portfolio .portfolio-filters {
-  padding: 0;
-  margin: 0 auto 20px auto;
-  list-style: none;
-  text-align: center;
-}
-
-.portfolio .portfolio-filters li {
-  cursor: pointer;
-  display: inline-block;
-  padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  margin: 0 10px;
-  line-height: 1;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  transition: all 0.3s ease-in-out;
 }
 
 .portfolio {
@@ -745,67 +720,37 @@ section,
 .portfolio .portfolio-content {
   position: relative;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .portfolio .portfolio-content img {
+  border: solid 2px #040b14;
   transition: 0.3s;
 }
 
-.portfolio .portfolio-content .portfolio-info {
-  opacity: 0;
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  transition: all ease-in-out 0.3s;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-}
-
-.portfolio .portfolio-content .portfolio-info h4 {
-  font-size: 14px;
-  padding: 5px 10px;
-  font-weight: 400;
-  color: #ffffff;
-  display: inline-block;
-  background-color: var(--accent-color);
-}
-
-.portfolio .portfolio-content .portfolio-info p {
-  position: absolute;
-  bottom: 10px;
+.portfolioBtnContainer {
   text-align: center;
-  display: inline-block;
-  left: 0;
-  right: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
 }
 
-.portfolio .portfolio-content .portfolio-info .preview-link,
-.portfolio .portfolio-content .portfolio-info .details-link {
-  position: absolute;
-  left: calc(50% - 40px);
-  font-size: 26px;
-  top: calc(50% - 14px);
-  color: #fff;
-  transition: 0.3s;
-  line-height: 1.2;
+.portfolioBtn {
+  height: 40px;
+  width: 30%;
+  padding: 0;
+  background-color:#151f2b;
+  color: var(--heading-color);
+  border: solid 1px var(--accent-color);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.portfolio .portfolio-content .portfolio-info .preview-link:hover,
-.portfolio .portfolio-content .portfolio-info .details-link:hover {
-  color: var(--accent-color);
+.portfolioBtn a {
+  color: white;
+  text-decoration: none;
 }
 
-.portfolio .portfolio-content .portfolio-info .details-link {
-  left: 50%;
-  font-size: 34px;
-  line-height: 0;
-}
-
-.portfolio .portfolio-content:hover .portfolio-info {
-  opacity: 1;
+.portfolioBtn .details-link i {
+  font-size: 24px;
 }
 
 .portfolio .portfolio-content:hover img {
@@ -816,100 +761,21 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
-.contact .info-wrap {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
 
-@media (max-width: 575px) {
-  .contact .info-wrap {
-    padding: 20px;
-  }
-}
-
-.contact .info-item {
-  margin-bottom: 40px;
-}
-
-.contact .info-item i {
-  font-size: 20px;
-  color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 92%);
-  width: 44px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  transition: all 0.3s ease-in-out;
-  margin-right: 15px;
-}
-
-.contact .info-item h3 {
-  padding: 0;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.contact .info-item p {
-  padding: 0;
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-.contact .info-item:hover i {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-
-.contact .php-email-form {
-  background-color: var(--surface-color);
-  height: 100%;
-  padding: 30px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 575px) {
-  .contact .php-email-form {
-    padding: 20px;
-  }
-}
-
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
-  font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
-  color: var(--default-color);
-  background-color: var(--surface-color);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
-}
-
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
+.form-control, .form-group {
   border-color: var(--accent-color);
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+.form-group {
+  padding-bottom: 16px;
 }
 
-.contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 10px 30px;
-  transition: 0.4s;
-  border-radius: 50px;
+.form-group ::placeholder{
+  color: var(--accent-color);
 }
 
-.contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 25%);
+#name, #email, #subject, #message {
+  padding-bottom: 6px;
+  color: #fff;
+  background-color: #151f2b;
 }
