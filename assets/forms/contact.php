@@ -17,8 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $response['error'] = "Invalid email format.";
     } else {
-        $to = "bonzojo@proton.me"; // Change this to your email
-        $from = "webdonkey@outlook.com";
+        $to = "bonzojo@proton.me";
         $headers = "From: $name <$email>\r\n";
         $headers .= "Reply-To: $email\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";

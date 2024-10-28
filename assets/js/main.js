@@ -206,7 +206,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
           responseMessage.innerHTML = '<div class="alert alert-danger">' + data.error + '</div>';
       }
   })
-  .catch(error => { // Ensure this catch is directly after the last then
+  .catch(error => { 
       console.error('Fetch error:', error); // Log the error
       document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger">An unexpected error occurred. Please try again later.</div>';
   });
