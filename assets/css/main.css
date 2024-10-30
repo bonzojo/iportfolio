@@ -624,7 +624,7 @@ section,
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  background-color: #151f2b;
+  background-color: color-mix(in srgb, #151f2b, transparent 70%);
   color: color-mix(in srgb, #149ddd, transparent 20%);
   margin-bottom: 10px;
 }

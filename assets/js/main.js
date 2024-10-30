@@ -177,41 +177,32 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 
-
   // Contact Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // Prevent the default form submission
+  const contactForm = document.getElementById('contactForm');
+  const responseMessage = document.getElementById('responseMessage');
 
-  // Create a FormData object from the form
-  const formData = new FormData(this);
 
-    fetch('../assets/forms/contact.php', {
-      method: 'POST',
-      body: formData
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok: ' + response.statusText);
-      }
-      return response.json();
-  })
-  .then(data => {
-      const responseMessage = document.getElementById('responseMessage');
-      responseMessage.innerHTML = ''; // Clear previous messages
+  contactForm.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent the form from submitting the default way
 
-      if (data.success) {
-          responseMessage.innerHTML = '<div class="alert alert-success">' + data.success + '</div>';
-          this.reset(); // Reset the form
-      } else if (data.error) {
-          responseMessage.innerHTML = '<div class="alert alert-danger">' + data.error + '</div>';
-      }
-  })
-  .catch(error => { 
-      console.error('Fetch error:', error); // Log the error
-      document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger">An unexpected error occurred. Please try again later.</div>';
+      // Collect form data
+      const formData = new FormData(contactForm);
+
+      // AJAX request using Fetch API
+      fetch('../contact.php', {
+          method: 'POST',
+          body: formData,
+      })
+      .then(response => response.text())
+      .then(data => {
+          responseMessage.innerHTML = `<p class='success'>${data}</p>`;
+          contactForm.reset(); // Clear the form fields
+      })
+      .catch(error => {
+          responseMessage.innerHTML = "<p class='error'>There was an error sending your message. Please try again later.</p>";
+          console.error('Error:', error);
+      });
   });
-});
-
 
 })();
 
